@@ -1,0 +1,13 @@
+{
+  "name": "pyro.sh",
+  "scripts": {
+    "css": "echo '<style>' > src/components/styles.html && tailwindcss-cli build ./config.css >> ./src/components/styles.html && echo '</style>' >> src/components/styles.html",
+    "compile": "sergey --root=./src/ --imports=./components --output=../public --port=1237",
+    "start": "npm run compile -- --watch",
+    "build": "NODE_ENV=production npm run css && npm run compile && find public -type f -name '*.html' | xargs brotli -Z -j"
+  },
+  "devDependencies": {
+    "sergey": "0.0.13",
+    "tailwindcss-cli": "^0.1.2"
+  }
+}

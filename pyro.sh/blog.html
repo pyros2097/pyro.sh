@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="encoding" content="utf-8">
+    <meta name="description" content="Hi there, I'm Peter John, a fullstack developer from Bangalore, India.">
+    <meta name="author" content="pyro.sh">
+    <meta name="keywords" content="pyros2097,pyro.sh,full stack developer,bangalore,india">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script src="/assets/js/alpine.js" defer></script>
+    <sergey-slot name="title">
+        <title>pyro.sh</title>
+    </sergey-slot>
+</head>
+<body class="w-full h-full">
+    <header>
+    <div class="w-full flex flex-1 flex-row justify-center bg-newblack">
+        <div class="flex flex-row flex-1 items-center max-w-5xl font-monospace text-white p-3">
+            <a class="flex text-newyellow text-xl sm:text-2xl pl-1 pr-4" href="/">
+                pyros
+            </a>
+            <div class="flex flex-row flex-1 items-center text-base sm:text-lg">
+                <a class="px-2 mx-1 hover:bg-gray-700" href="/work">
+                    work
+                </a>
+                <div class="text-lg">
+                    |
+                </div>
+                <a class="px-2 mx-1 hover:bg-gray-700" href="/ref">
+                    ref
+                </a>
+                <div class="text-lg">
+                    |
+                </div>
+                <a class="px-2 mx-1 hover:bg-gray-700" href="/blog">
+                    blog
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+    <main class="w-full h-full">
+        <sergey-import src="page">
+    <sergey-template name="title">
+        <title>pyro.sh</title>
+    </sergey-template>
+    <div class="w-full flex flex-1 flex-row justify-center">
+        <div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
+            <div class="flex flex-1 flex-col">
+                <div class="flex flex-1 flex-col">
+                    <div class="flex flex-1 flex-row mt-2">
+                        <div class="flex-1">
+                            <div>
+                                ▪
+                                <a class="ml-2 border-b border-black" href="/blog/gopibot-to-the-rescue">
+                                    Gopibot to the rescue
+                                </a>
+                            </div>
+                        </div>
+                        <div class="">
+                            2017-10-04
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-row mt-2">
+                        <div class="flex-1">
+                            <div>
+                                ▪
+                                <a class="ml-2 border-b border-black" href="/blog/eyecandy-golang-error-reporting">
+                                    Eyecandy golang error reporting
+                                </a>
+                            </div>
+                        </div>
+                        <div class="">
+                            2016-09-17
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sergey-import>
+    </main>
+</body>
+</html>

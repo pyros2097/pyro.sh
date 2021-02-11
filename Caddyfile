@@ -1,7 +1,13 @@
+assets.pyro.sh {
+	encode zstd gzip
+	file_server
+	root * /home/pi/assets.pyro.sh
+}
+
 pyro.sh {
 	encode zstd gzip
 	file_server
-	root * ./website/public
+	root * /home/pi/pyro.sh
 	rewrite /work /work.html
 	rewrite /ref /ref.html
 	rewrite /blog /blog.html
@@ -20,5 +26,15 @@ pyro.sh {
 timer.pyro.sh {
 	encode zstd gzip
 	file_server
-	root * ./timer/public
+	root * /home/pi/timer.pyro.sh
 }
+
+# setup pihole
+# curl -sSL https://install.pi-hole.net | bash
+# pihole -a -p
+# Enter empty password
+# /etc/lighttpd/lighttpd.conf
+# server.port = 1080
+# sudo systemctl restart lighttpd
+# unbound
+# http://192.168.0.104:1080/admin/

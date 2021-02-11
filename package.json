@@ -1,0 +1,16 @@
+{
+  "name": "pyro.sh",
+  "scripts": {
+    "css": "tailwindcss-cli build ./config.css -o ./assets.pyro.sh/css/styles.css",
+    "website": "rm -rf pyro.sh/* && IN=zsrc/website OUT=pyro.sh node main.js",
+    "timer": "rm -rf timer.pyro.sh/* IN=zsrc/timer OUT=timer.pyro.sh node main.js",
+    "bible": "rm -rf bible.pyro.sh/* IN=zsrc/bible OUT=bible.pyro.sh node main.js"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.1",
+    "express": "^4.17.1",
+    "sergey": "0.0.13",
+    "serve-static": "^1.14.1",
+    "tailwindcss-cli": "^0.1.2"
+  }
+}

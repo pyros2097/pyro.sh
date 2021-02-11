@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="w-full h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="encoding" content="utf-8">
+    <meta name="description" content="Indian Bible App">
+    <meta name="author" content="pyro.sh">
+    <meta name="keywords" content="indian,bible,app,kannada">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
+    <title>Indian Bible App</title>
+    <sergey-import src="icon" />
+    <sergey-import src="styles" />
+</head>
+
+<body class="w-full h-full">
+    <script>
+        window.books = [
+            "Genesis",
+            "Exodus",
+            "Leviticus",
+            "Numbers",
+            "Deuteronomy",
+            "Joshua",
+            "Judges",
+            "Ruth",
+            "1 Samuel",
+            "2 Samuel",
+            "1 Kings",
+            "2 Kings",
+            "1 Chronicles",
+            "2 Chronicles",
+            "Ezra",
+            "Nehemiah",
+            "Esther",
+            "Job",
+            "Psalm",
+            "Proverbs",
+            "Ecclesiastes",
+            "Song of Solomon",
+            "Isaiah",
+            "Jeremiah",
+            "Lamentations",
+            "Ezekiel",
+            "Daniel",
+            "Hosea",
+            "Joel",
+            "Amos",
+            "Obadiah",
+            "Jonah",
+            "Micah",
+            "Nahum",
+            "Habakkuk",
+            "Zephaniah",
+            "Haggai",
+            "Zechariah",
+            "Malachi",
+            "Matthew",
+            "Mark",
+            "Luke",
+            "John",
+            "Acts",
+            "Romans",
+            "1 Corinthians",
+            "2 Corinthians",
+            "Galatians",
+            "Ephesians",
+            "Philippians",
+            "Colossians",
+            "1 Thessalonians",
+            "2 Thessalonians",
+            "1 Timothy",
+            "2 Timothy",
+            "Titus",
+            "Philemon",
+            "Hebrews",
+            "James",
+            "1 Peter",
+            "2 Peter",
+            "1 John",
+            "2 John",
+            "3 John",
+            "Jude",
+            "Revelation"
+        ]
+    </script>
+    <div x-data="{ bible: '', book: '', chapter: 1 }">
+        <div class="w-full h-full flex flex-1 flex-col items-center" x-show="bible === ''">
+            <div class="flex mt-20">
+                <p class="text-4xl">The Holy Bible in different Indian Languages</p>
+            </div>
+            <div class="flex flex-1 items-start mt-40">
+                <button type="button" class="btn1" @click="bible='kannada';book='Genesis';chapter=1;">
+                    Kannada
+                </button>
+            </div>
+        </div>
+        <div class="w-full h-full flex flex-row" x-show="bible !== ''">
+            <div class="flex bg-gray-100 border-r border-gray-500 overflow-auto">
+                <div class="grid grid-cols-3 gap-2 ml-2">
+                    <template x-for="item in window.books" :key="item">
+                        <div class="cursor-pointer pt-4 hover:bg-gray-200" @click="book=item;chapter=1;">
+                            <p class="text-md" x-text="item"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="flex flex-1 flex-col p-4 ml-4">
+                <div class="flex flex-row items-center border-b border-gray-500">
+                    <div class="flex flex-row">
+                        <div class="sm:hidden w-10 h-10">
+                            <svg viewBox="0 0 512 512" focusable="true" role="presentation" class="css-wc8pli">
+                                <g fill="currentColor">
+                                    <line x1="80" y1="160" x2="432" y2="160"
+                                        style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 32px;">
+                                    </line>
+                                    <line x1="80" y1="256" x2="432" y2="256"
+                                        style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 32px;">
+                                    </line>
+                                    <line x1="80" y1="352" x2="432" y2="352"
+                                        style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 32px;">
+                                    </line>
+                                </g>
+                            </svg>
+                        </div>
+                        <p class="font-bold text-xl">Genesis</p>
+                    </div>
+                    <div class="flex flex-row flex-1 items-center justify-end">
+                        <p class="text-lg mr-4">Chapter</p>
+                        <div class="flex flex-row">
+                            <select class="css-4nzkm4">
+                                <template x-for="item in [1, 2, 3 ,4, 5]" :key="item">
+                                    <option x-bind:value="item" x-text="item">
+                                </template>
+                            </select>
+                            <div class="w-10 h-10">
+                                <svg viewBox="0 0 24 24" focusable="false" role="presentation" aria-hidden="true"
+                                    class="css-12c4avn">
+                                    <path fill="currentColor" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="css-1ctu3jc">
+                    <template x-for="(item, index) in [1, 2, 3 ,4, 5]" :key="item">
+                        <div class="css-1q7njkh">
+                            <div class="css-jw6uec">
+                                <p class="css-dyd6az" x-text="index+1"></p>
+                                <p class="css-5jh8t9" x-text="item"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <sergey-import src="alpine" />
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+	<g fill="currentColor">
+	  <path d='M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z' style={{ fill: 'none', stroke: '#000', strokeMiterlimit: 10, strokeWidth: '32px'}}/><path d='M216.32,334.44,330.77,265.3a10.89,10.89,0,0,0,0-18.6L216.32,177.56A10.78,10.78,0,0,0,200,186.87V325.13A10.78,10.78,0,0,0,216.32,334.44Z'/>
+	</g>
+      ),
+      viewBox: '0 0 512 512' 
+    },
+    stop: {
+      path: (
+        <g fill="currentColor">
+	<path d='M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z' style={{ fill: 'none', stroke: '#000', strokeMiterlimit: 10, strokeWidth: '32px'}}/><path d='M310.4,336H201.6A25.62,25.62,0,0,1,176,310.4V201.6A25.62,25.62,0,0,1,201.6,176H310.4A25.62,25.62,0,0,1,336,201.6V310.4A25.62,25.62,0,0,1,310.4,336Z'/>
+	</g>
+      ),
+      viewBox: '0 0 512 512',
+    },
+    menu: {
+      path: (
+	<g fill="currentColor">
+	  <line x1='80' y1='160' x2='432' y2='160' style={{fill: 'none', stroke: '#000', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '32px'}} />
+	  <line x1='80' y1='256' x2='432' y2='256' style={{fill: 'none', stroke: '#000', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '32px'}} />
+	  <line x1='80' y1='352' x2='432' y2='352' style={{fill: 'none', stroke: '#000', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '32px'}} />
+	</g>
+      ),
+      viewBox: '0 0 512 512'
+    },
+  }
+};

@@ -28,3 +28,6 @@ localhost:3002 {
 # sudo systemctl restart lighttpd
 # unbound
 # http://192.168.0.104:1080/admin/
+
+#TODO:
+# increase ulimit and basic ec2 setup

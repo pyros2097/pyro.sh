@@ -62,13 +62,13 @@
           transitions(state) {
             switch (state) {
               case 'enter':
-                return `transition-all duration-1000`
+                return `transition-all duration-500`
               case 'enter-start':
                 return this.rightToLeft ? 'transform translate-x-full' : 'transform -translate-x-full'
               case 'enter-end':
                 return 'transform translate-x-0'
               case 'leave':
-                return `absolute transition-all duration-1000`
+                return `absolute transition-all duration-500`
               case 'leave-start':
                 return 'transform translate-x-0'
               case 'leave-end':

@@ -99,8 +99,12 @@
                 higlightedVerses: [],
                 isPlaying: false,
                 currentAudio: null,
+                drawerOpen: window.innerWidth < 600 ? false : true,
                 openSelect() {
                     this.showChapters = !this.showChapters;
+                },
+                openDrawer() {
+                    this.drawerOpen = !this.drawerOpen;
                 },
                 changeBible(bible) {
                     this.bible = bible;
@@ -153,8 +157,8 @@
     </script>
     <div class="h-full" x-data="bibleApp()">
         <div class="w-full h-full flex flex-1 flex-col items-center" x-show="bible === ''">
-            <div class="flex mt-20">
-                <p class="text-4xl">The Holy Bible in different Indian Languages</p>
+            <div class="flex m-12">
+                <h1 class="text-4xl text-center leading-loose">The Holy Bible in different Indian Languages</h1>
             </div>
             <div class="flex flex-1 items-start mt-40">
                 <button type="button" class="btn1" @click="changeBible('kannada')">
@@ -163,46 +167,36 @@
             </div>
         </div>
         <div class="w-full h-full flex flex-row" x-show="bible !== ''">
-            <div class="flex bg-gray-100 border-r border-gray-500 overflow-auto">
+            <div class="flex bg-gray-100 border-r border-gray-500 overflow-auto" x-show="drawerOpen">
                 <div class="grid grid-cols-3 gap-2 ml-2">
                     <template x-for="item in window.books" :key="item">
-                        <div class="cursor-pointer p-1 hover:bg-gray-200" @click="changeBook(item)">
-                            <p class="text-md" x-text="item"></p>
-                        </div>
+                        <button class="text-md text-left p-1 hover:bg-gray-200" x-text="item" @click="changeBook(item)">
+                        </button>
                     </template>
                 </div>
             </div>
             <div class="flex flex-1 flex-col p-4 ml-4">
                 <div class="flex flex-row items-center border-b border-gray-500">
-                    <div class="flex flex-row">
-                        <div class="sm:hidden w-10 h-10">
-                            <svg viewBox="0 0 512 512" focusable="true" role="presentation">
-                                <g fill="currentColor">
-                                    <line x1="80" y1="160" x2="432" y2="160"
-                                        style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 32px;">
-                                    </line>
-                                    <line x1="80" y1="256" x2="432" y2="256"
-                                        style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 32px;">
-                                    </line>
-                                    <line x1="80" y1="352" x2="432" y2="352"
-                                        style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 32px;">
-                                    </line>
-                                </g>
+                    <div class="flex flex-row items-center">
+                        <button class="sm:hidden mr-2" @click="openDrawer()">
+                            <svg width="36" height="36" viewBox="0 0 24 24"
+                                style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+                                <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z"></path>
                             </svg>
-                        </div>
-                        <p class="font-bold text-xl" x-text="book"></p>
+                        </button>
+                        <p class="font-normal text-xl" x-text="book"></p>
                     </div>
                     <div class="flex flex-row flex-1 items-center justify-end mr-6">
-                        <button @click="onPlayClick()">
+                        <button class="text-black" :class="{'text-gray-500 cursor-default': higlightedVerses.length === 0}" @click="onPlayClick()">
                             <svg width="36" height="36" viewBox="0 0 24 24"
-                                style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:" x-show="!isPlaying">
+                                style="fill:currentColor;transform:;-ms-filter:" x-show="!isPlaying">
                                 <path
                                     d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
                                 </path>
                                 <path d="M9 17L17 12 9 7z"></path>
                             </svg>
                             <svg width="36" height="36" viewBox="0 0 24 24"
-                                style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:" x-show="isPlaying">
+                                style="fill:currentColor;transform:;-ms-filter:" x-show="isPlaying">
                                 <path
                                     d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
                                 </path>
@@ -249,7 +243,6 @@
             </div>
         </div>
     </div>
-    <sergey-import src="alpine" />
 </body>
 
 </html>

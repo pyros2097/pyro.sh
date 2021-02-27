@@ -1,5 +1,5 @@
-const urlsToCache = ['/', '/index.html', '/assets/alpine.js', '/assets/logo.png', '/assets/styles.css'];
-const version = 'bible-v0.1.0'
+const urlsToCache = ['/', '/index.html', '/assets/alpine.js', '/assets/logo.png', '/assets/styles.css'];  
+const version = 'bible-v0.1.3'
 
 self.addEventListener('install', function (event) {
   self.skipWaiting();

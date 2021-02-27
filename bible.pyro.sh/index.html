@@ -191,7 +191,7 @@
             </div>
         </div>
         <div class="w-full h-full flex flex-row" x-show="bible !== ''">
-            <div class="flex bg-gray-100 border-r border-gray-500 overflow-auto" x-show="drawerOpen">
+            <div class="w-5/6 sm:w-auto flex bg-gray-100 border-r border-gray-500" x-show="drawerOpen">
                 <div class="grid grid-cols-3 gap-2 ml-2">
                     <template x-for="item in window.books" :key="item">
                         <button class="text-md text-left p-1 hover:bg-gray-200" x-text="item" @click="changeBook(item)">
@@ -199,7 +199,7 @@
                     </template>
                 </div>
             </div>
-            <div class="flex flex-1 flex-col p-4 ml-4">
+            <div class="w-1/6 sm:w-auto flex flex-1 flex-col p-4 ml-4">
                 <div class="flex flex-row items-center border-b border-gray-500">
                     <div class="flex flex-row items-center">
                         <button class="sm:hidden mr-2" @click="openDrawer()">

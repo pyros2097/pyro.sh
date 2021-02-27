@@ -24,6 +24,14 @@ localhost:3003 {
 	file_server
 	root * ./bible.pyro.sh
 
+	header {
+		Strict-Transport-Security max-age=31536000;
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy no-referrer-when-downgrade
+		Content-Security-Policy: "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; media-src 'self'; style-src 'self'; frame-ancestors 'none'; base-uri 'none';"
+	}
+
 	handle_errors {
 		@404 {
 			expression {http.error.status_code} == 404

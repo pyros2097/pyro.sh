@@ -11,6 +11,28 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
     <title>Indian Bible App</title>
+    <script>
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => {
+                reg.onupdatefound = () => {
+                    const installing = reg.installing;
+                    if (installing == null) {
+                        return;
+                    }
+                    installing.onstatechange = () => {
+                        if (installing.state === 'installed') {
+                            if (navigator.serviceWorker.controller) {
+                                reg.update();
+                                alert('A new Version of the app is Available. Updating Now.');
+                                window.location.reload();
+                            } else {
+                                console.log('Content is cached for offline use.');
+                            }
+                        }
+                    };
+                };
+            });
+    </script>
     <link rel="icon" type="image/x-icon" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/styles.css">
     <script>
@@ -161,7 +183,9 @@
                 <h1 class="text-4xl text-center leading-loose">The Holy Bible in different Indian Languages</h1>
             </div>
             <div class="flex flex-1 items-start mt-40">
-                <button type="button" class="btn1" @click="changeBible('kannada')">
+                <button type="button"
+                    class="bg-gray-300 text-gray-900 text-3xl rounded hover:bg-gray-200 px-8 py-4 focus:outline-none mx-10"
+                    @click="changeBible('kannada')">
                     Kannada
                 </button>
             </div>
@@ -179,24 +203,23 @@
                 <div class="flex flex-row items-center border-b border-gray-500">
                     <div class="flex flex-row items-center">
                         <button class="sm:hidden mr-2" @click="openDrawer()">
-                            <svg width="36" height="36" viewBox="0 0 24 24"
-                                style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+                            <svg class="fill-current" width="36" height="36" viewBox="0 0 24 24">
                                 <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z"></path>
                             </svg>
                         </button>
                         <p class="font-normal text-xl" x-text="book"></p>
                     </div>
                     <div class="flex flex-row flex-1 items-center justify-end mr-6">
-                        <button class="text-black" :class="{'text-gray-500 cursor-default': higlightedVerses.length === 0}" @click="onPlayClick()">
-                            <svg width="36" height="36" viewBox="0 0 24 24"
-                                style="fill:currentColor;transform:;-ms-filter:" x-show="!isPlaying">
+                        <button class="text-black"
+                            :class="{'text-gray-500 cursor-default': higlightedVerses.length === 0}"
+                            @click="onPlayClick()">
+                            <svg class="fill-current" width="36" height="36" viewBox="0 0 24 24" x-show="!isPlaying">
                                 <path
                                     d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
                                 </path>
                                 <path d="M9 17L17 12 9 7z"></path>
                             </svg>
-                            <svg width="36" height="36" viewBox="0 0 24 24"
-                                style="fill:currentColor;transform:;-ms-filter:" x-show="isPlaying">
+                            <svg width="36" height="36" viewBox="0 0 24 24" x-show="isPlaying">
                                 <path
                                     d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
                                 </path>

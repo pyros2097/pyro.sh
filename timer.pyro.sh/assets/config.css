@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .active {
+    @apply bg-gray-700;
+  }
+
+  .clock-text {
+    @apply font-body flex-1 text-8xl sm:text-10xl text-white;
+  }
+
+  .btn1 {
+    @apply bg-gray-300 text-gray-900 rounded hover:bg-gray-200 px-4 py-2 focus:outline-none mx-10;
+  }
+}

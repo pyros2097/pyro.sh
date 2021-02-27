@@ -1,9 +1,9 @@
 {
   "name": "pyro.sh",
   "scripts": {
-    "website": "tailwindcss-cli build ./config.css -o ./pyro.sh/assets/styles.css",
-    "timer": "tailwindcss-cli build ./config.css -o ./timer.pyro.sh/assets/styles.css",
-    "bible": "tailwindcss-cli build ./config.css -o ./bible.pyro.sh/assets/styles.css",
+    "website": "tailwindcss-cli build ./pyro.sh/assets/config.css -o ./pyro.sh/assets/styles.css",
+    "timer": "tailwindcss-cli build ./timer.pyro.sh/assets/config.css -o ./timer.pyro.sh/assets/styles.css",
+    "bible": "tailwindcss-cli build ./bible.pyro.sh/assets/config.css -o ./bible.pyro.sh/assets/styles.css",
     "deploy-website": "NODE_ENV=production npm run website && rsync -aP --delete pyro.sh pi@192.168.0.104:/home/pi",
     "deploy-timer": "NODE_ENV=production npm run timer && rsync -aP --delete timer.pyro.sh pi@192.168.0.104:/home/pi"
   },

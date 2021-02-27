@@ -98,7 +98,7 @@
                 showChapters: false,
                 higlightedVerses: [],
                 openSelect() {
-                    this.showChapters = true;
+                    this.showChapters = !this.showChapters;
                 },
                 changeBible(bible) {
                     this.bible = bible;
@@ -173,7 +173,7 @@
                         <div class="relative inline-block text-left">
                             <button type="button"
                                 class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 m-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                                aria-haspopup="true" aria-expanded="true" @click="openSelect()">
+                                aria-haspopup="true" aria-expanded="true" @click="openSelect()" @click.away="showChapters = false">
                                 <span x-text="'Chapter ' + (chapter)"></span>
                                 <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                     fill="currentColor" aria-hidden="true">

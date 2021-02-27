@@ -14,7 +14,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/logo.png">
     <link rel="stylesheet" href="/assets/styles.css">
     <script>
-        window.bibleJson = {};
+        window.bibleJson = { '': [[]] };
         fetch('/assets/bibles/kannada.json').then((res) => res.json()).then((data) => window.bibleJson = data);
     </script>
     <script src="/assets/alpine.js" defer></script>
@@ -97,6 +97,8 @@
                 chapter: 1,
                 showChapters: false,
                 higlightedVerses: [],
+                isPlaying: false,
+                currentAudio: null,
                 openSelect() {
                     this.showChapters = !this.showChapters;
                 },
@@ -125,6 +127,27 @@
                         this.higlightedVerses.splice(index, 1);
                     }
                 },
+                async onPlayClick() {
+                    if (this.isPlaying) {
+                        this.isPlaying = false;
+                        if (this.currentAudio) {
+                            this.currentAudio.pause();
+                            this.currentAudio = null;
+                        }
+                    } else {
+                        this.isPlaying = true;
+                        for (const i of this.higlightedVerses) {
+                            await new Promise((resolve) => {
+                                const audio = new Audio(`/assets/audio/${this.bible}/${this.book}/chapter_${this.chapter}/verse_${i + 1}.mp3`);
+                                audio.loop = false;
+                                audio.play();
+                                audio.addEventListener('ended', resolve);
+                                this.currentAudio = audio;
+                            });
+                        }
+                        this.isPlaying = false;
+                    };
+                }
             }
         }
     </script>
@@ -169,29 +192,46 @@
                         </div>
                         <p class="font-bold text-xl" x-text="book"></p>
                     </div>
-                    <div class="flex flex-row flex-1 items-center justify-end">
-                        <div class="relative inline-block text-left">
-                            <button type="button"
-                                class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 m-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                                aria-haspopup="true" aria-expanded="true" @click="openSelect()" @click.away="showChapters = false">
-                                <span x-text="'Chapter ' + (chapter)"></span>
-                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 h-96 overflow-y-auto" x-show="showChapters">
-                                <div class="py-1" role="menu" aria-orientation="vertical"
-                                    aria-labelledby="options-menu">
-                                    <template x-for="(item, index) in bibleJson[book]" :key="index">
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" :class="{'bg-gray-100': chapter === index+1}"
-                                            role="menuitem" x-text="'Chapter '+(index+1)"
-                                            @click="changeChapter(index + 1)"></a>
-                                    </template>
-                                </div>
+                    <div class="flex flex-row flex-1 items-center justify-end mr-6">
+                        <button @click="onPlayClick()">
+                            <svg width="36" height="36" viewBox="0 0 24 24"
+                                style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:" x-show="!isPlaying">
+                                <path
+                                    d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
+                                </path>
+                                <path d="M9 17L17 12 9 7z"></path>
+                            </svg>
+                            <svg width="36" height="36" viewBox="0 0 24 24"
+                                style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:" x-show="isPlaying">
+                                <path
+                                    d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z">
+                                </path>
+                                <path d="M13 9H15V15H13zM9 9H11V15H9z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="relative inline-block text-left">
+                        <button type="button"
+                            class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 m-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                            aria-haspopup="true" aria-expanded="true" @click="openSelect()"
+                            @click.away="showChapters = false">
+                            <span x-text="'Chapter ' + (chapter)"></span>
+                            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 h-96 overflow-y-auto"
+                            x-show="showChapters">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                <template x-for="(item, index) in bibleJson[book]" :key="index">
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                        :class="{'bg-gray-100': chapter === index+1}" role="menuitem"
+                                        x-text="'Chapter '+(index+1)" @click="changeChapter(index + 1)"></a>
+                                </template>
                             </div>
                         </div>
                     </div>

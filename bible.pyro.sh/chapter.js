@@ -9,32 +9,6 @@ export default function ChapterTemplate({ pageContext: { locale, book, totalChap
   const [playing, setPlaying] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const playingAudio = useRef();
-  const changeBook = (book) => {
-    navigate(`/${locale}/${book}/1`);
-  };
-  const changeChapter = (index) => {
-    navigate(`/${locale}/${book}/${index}`);
-  };
-  const highlightVerse = (verse) => {
-    if (selected.length > 0) {
-      const last = selected[selected.length - 1];
-      if (last === verse) {
-        selected.pop();
-      } else if (last > verse) {
-        for (let i = last; i >= verse; i--) {
-          selected.pop();
-        }
-      } else if (last < verse) {
-        for (let i = last + 1; i <= verse; i++) {
-          selected.push(i);
-        }
-      }
-    } else {
-      selected.push(verse);
-    }
-    setSelected([...selected]);
-  };
-  const isHighlighted = (verse) => selected.includes(verse);
   const playAudio = async () => {
     if (playing) {
       setPlaying(false);

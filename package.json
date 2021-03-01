@@ -5,7 +5,8 @@
     "timer": "tailwindcss-cli build ./timer.pyro.sh/assets/config.css -o ./timer.pyro.sh/assets/styles.css",
     "bible": "tailwindcss-cli build ./bible.pyro.sh/assets/config.css -o ./bible.pyro.sh/assets/styles.css",
     "deploy-website": "NODE_ENV=production npm run website && rsync -aP --delete pyro.sh pi@192.168.0.104:/home/pi",
-    "deploy-timer": "NODE_ENV=production npm run timer && rsync -aP --delete timer.pyro.sh pi@192.168.0.104:/home/pi"
+    "deploy-timer": "NODE_ENV=production npm run timer && rsync -aP --delete timer.pyro.sh pi@192.168.0.104:/home/pi",
+    "deploy-bible": "NODE_ENV=production npm run bible && rsync -aP --delete bible.pyro.sh pi@192.168.0.104:/home/pi"
   },
   "devDependencies": {
     "tailwindcss-cli": "^0.1.2"

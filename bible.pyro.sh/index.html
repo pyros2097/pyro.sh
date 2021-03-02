@@ -112,6 +112,7 @@
             "Jude",
             "Revelation"
         ]
+        const isMobile = window.innerWidth < 600 ? true : false;
         function bibleApp() {
             return {
                 bible: '',
@@ -121,7 +122,8 @@
                 higlightedVerses: [],
                 isPlaying: false,
                 currentAudio: null,
-                drawerOpen: window.innerWidth < 600 ? false : true,
+                isMobile: isMobile,
+                drawerOpen: !isMobile,
                 openSelect() {
                     this.showChapters = !this.showChapters;
                 },
@@ -137,6 +139,9 @@
                     this.book = book;
                     this.higlightedVerses = [];
                     this.chapter = 1;
+                    if (isMobile) {
+                        this.drawerOpen = false;
+                    }
                 },
                 changeChapter(i) {
                     this.higlightedVerses = [];
@@ -192,7 +197,7 @@
             </div>
         </div>
         <div class="w-full h-full flex flex-row" x-show="bible !== ''">
-            <div class="w-5/6 sm:w-auto flex bg-gray-100 border-r border-gray-500" x-show="drawerOpen">
+            <div class="h-full overflow-y-auto w-5/6 sm:w-auto flex bg-gray-100 border-r border-gray-500" x-show="drawerOpen" x-transition:enter="transition-all duration-300" x-transition:enter-start="transform -translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="absolute transition-all duration-300" x-transition:leave-start="transform translate-x-full" x-transition:leave-end="transform -translate-x-full">
                 <div class="grid grid-cols-3 gap-2 ml-2">
                     <template x-for="item in window.books" :key="item">
                         <button class="text-md text-left p-1 hover:bg-gray-200" x-text="item" @click="changeBook(item)">
@@ -200,8 +205,8 @@
                     </template>
                 </div>
             </div>
-            <div class="w-1/6 sm:w-auto flex flex-1 flex-col p-4 ml-4">
-                <div class="flex flex-row items-center border-b border-gray-500">
+            <div class="w-1/6 sm:w-auto flex flex-1 flex-col p-0 ml-0 sm:px-4 sm:ml-2">
+                <div class="flex flex-row items-center border-b border-gray-500 py-2 px-2">
                     <div class="flex flex-row items-center">
                         <button class="sm:hidden mr-2" @click="openDrawer()">
                             <svg class="fill-current" width="36" height="36" viewBox="0 0 24 24">
@@ -228,7 +233,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="relative inline-block text-left">
+                    <div class="relative inline-block text-left mr-2">
                         <button type="button"
                             class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 m-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                             aria-haspopup="true" aria-expanded="true" @click="openSelect()"

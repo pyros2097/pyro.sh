@@ -197,7 +197,7 @@
             </div>
         </div>
         <div class="w-full h-full flex flex-row" x-show="bible !== ''">
-            <div class="h-full overflow-y-auto w-5/6 sm:w-auto flex bg-gray-100 border-r border-gray-500" x-show="drawerOpen" x-transition:enter="transition-all duration-300" x-transition:enter-start="transform -translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="absolute transition-all duration-300" x-transition:leave-start="transform translate-x-full" x-transition:leave-end="transform -translate-x-full">
+            <div class="h-full overflow-y-auto w-5/6 sm:w-auto flex bg-gray-100 border-r border-bibleborder" x-show="drawerOpen" x-transition:enter="transition-all duration-300" x-transition:enter-start="transform -translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="absolute transition-all duration-300" x-transition:leave-start="transform translate-x-full" x-transition:leave-end="transform -translate-x-full">
                 <div class="grid grid-cols-3 gap-2 ml-2">
                     <template x-for="item in window.books" :key="item">
                         <button class="text-md text-left p-1 hover:bg-gray-200" x-text="item" @click="changeBook(item)">
@@ -206,7 +206,7 @@
                 </div>
             </div>
             <div class="w-1/6 sm:w-auto flex flex-1 flex-col p-0 ml-0 sm:px-4 sm:ml-2">
-                <div class="flex flex-row items-center border-b border-gray-500 py-2 px-2">
+                <div class="flex flex-row items-center border-b border-bibleborder py-2 px-2">
                     <div class="flex flex-row items-center">
                         <button class="sm:hidden mr-2" @click="openDrawer()">
                             <svg class="fill-current" width="36" height="36" viewBox="0 0 24 24">
@@ -214,6 +214,7 @@
                             </svg>
                         </button>
                         <p class="font-normal text-xl" x-text="book"></p>
+                        <p class="font-normal text-xl ml-2" x-text="chapter"></p>
                     </div>
                     <div class="flex flex-row flex-1 items-center justify-end mr-6">
                         <button class="text-black"
@@ -235,7 +236,7 @@
                     </div>
                     <div class="relative inline-block text-left mr-2">
                         <button type="button"
-                            class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 m-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                            class="inline-flex justify-center w-full rounded-md border border-bibleborder shadow-sm px-4 py-2 m-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                             aria-haspopup="true" aria-expanded="true" @click="openSelect()"
                             @click.away="showChapters = false">
                             <span x-text="'Chapter ' + (chapter)"></span>
@@ -259,15 +260,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-full overflow-y-auto border-b border-gray-500">
+                <div class="h-full overflow-y-auto mb-2 ml-2 mr-2 sm:ml-0 sm:mr-0">
                     <template x-for="(item, index) in bibleJson[book][chapter-1]" :key="index">
-                        <div class="flex flex-1 flex-row mt-4 cursor-pointer"
+                        <div class="flex flex-1 flex-row mt-4 cursor-pointer items-baseline"
                             :class="{ 'bg-newyellow': isHighlighted(index) }" @click="onVerseClick(index)">
-                            <p class="text-xs text-black mt-1 mr-2 ml-2" x-text="index+1" :class="{'ml-2': index < 9}">
+                            <p class="text-xs font-bold text-newred mr-2 ml-2" x-text="index+1" :class="{'ml-2': index < 9}">
                             </p>
                             <p class="text-md text-black" x-text="item"></p>
                         </div>
                     </template>
+                    <div class="pb-10 border-b border-bibleborder"></div>
                 </div>
             </div>
         </div>

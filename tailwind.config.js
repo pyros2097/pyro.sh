@@ -28,6 +28,8 @@ module.exports = {
         codeconst: 'rgb(0, 92, 197)',
         codestring: 'rgb(3, 47, 98)',
         slider: '#f0ede2',
+        newred: '#a30400',
+        bibleborder: '#dddcda',
       },
     },
   },

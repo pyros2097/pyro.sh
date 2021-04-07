@@ -1,7 +1,7 @@
 localhost:3001 {
 	encode zstd gzip
 	file_server
-	root * ./pyro.sh
+	root * ./pyros.sh
 	try_files {path} {path}.html
 
 	handle_errors {
@@ -16,13 +16,13 @@ localhost:3001 {
 localhost:3002 {
 	encode zstd gzip
 	file_server
-	root * ./timer.pyro.sh
+	root * ./timer.pyros.sh
 }
 
 localhost:3003 {
 	encode zstd gzip
 	file_server
-	root * ./bible.pyro.sh
+	root * ./bible.pyros.sh
 
 	header {
 		Strict-Transport-Security max-age=31536000;

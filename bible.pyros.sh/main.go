@@ -95,18 +95,3 @@ func main() {
 	w.Navigate("http://0.0.0.0:3005")
 	w.Run()
 }
-
-// mkdir icon.iconset
-// sips -z 16 16 "assets/logo.png" --out icon.iconset/icon_16x16.png
-// sips -z 32 32 "assets/logo.png" --out icon.iconset/icon_16x16@2x.png
-// cp icon.iconset/icon_16x16@2x.png icon.iconset/icon_32x32.png
-// sips -z 64 64 "assets/logo.png" --out icon.iconset/icon_32x32@2x.png
-// sips -z 128 128 "assets/logo.png" --out icon.iconset/icon_128x128.png
-// sips -z 256 256 "assets/logo.png" --out icon.iconset/icon_128x128@2x.png
-// cp icon.iconset/icon_128x128@2x.png icon.iconset/icon_256x256.png
-// sips -z 512 512 "assets/logo.png" --out icon.iconset/icon_256x256@2x.png
-// cp icon.iconset/icon_256x256@2x.png icon.iconset/icon_512x512.png
-// sips -z 1024 1024 "assets/logo.png" --out icon.iconset/icon_512x512@2x.png
-// iconutil -c icns icon.iconset
-// rm -R icon.iconset
-// go build -o IndianBible.app/Contents/MacOS/bible

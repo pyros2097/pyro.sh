@@ -1,14 +1,7 @@
 {
   "name": "pyros.sh",
   "scripts": {
-    "website": "tailwindcss-cli build ./pyros.sh/assets/config.css -o ./pyros.sh/assets/styles.css",
-    "timer": "tailwindcss-cli build ./timer.pyros.sh/assets/config.css -o ./timer.pyros.sh/assets/styles.css",
-    "bible": "tailwindcss-cli build ./bible.pyros.sh/assets/config.css -o ./bible.pyros.sh/assets/styles.css",
-    "deploy-website": "NODE_ENV=production npm run website && rsync -aP --delete pyros.sh pi@192.168.0.104:/home/pi",
-    "deploy-timer": "NODE_ENV=production npm run timer && rsync -aP --delete timer.pyros.sh pi@192.168.0.104:/home/pi",
-    "deploy-bible": "NODE_ENV=production npm run bible && rsync -aP --delete bible.pyros.sh pi@192.168.0.104:/home/pi"
-  },
-  "devDependencies": {
-    "tailwindcss-cli": "^0.1.2"
+    "start": "npx serve .",
+    "build": "npx tailwindcss-cli build ./assets/config.css -o ./assets/styles.css"
   }
 }

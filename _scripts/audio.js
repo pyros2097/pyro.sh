@@ -4,7 +4,6 @@ const util = require('util');
 const bible = require('./data/kannada.json')
 const client = new textToSpeech.TextToSpeechClient();
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS = '~/.gcloud/bionic-repeater-283714-9d735436c317.json'
 const gender = 'FEMALE'
 
 async function main() {

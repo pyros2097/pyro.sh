@@ -1,0 +1,25 @@
+name: 🚀 Deploy website on push
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-test-and-push:
+    runs-on: ubuntu-latest
+    name: Build and test and push
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+      - name: Build
+        run: npm run build
+      - name: Sync files
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+        with:
+          ftp_host: ${{ secrets.FTP_HOST }}
+          ftp_username: ${{ secrets.FTP_USERNAME }}
+          ftp_password: ${{ secrets.FTP_PASSWORD }}
+          local_source_dir: '.'
+          dist_target_dir: '.'
+          delete: "true"
+          only_newer: "true"
+          exclude: "'^\.git/$' '^\.github/$' '^_scripts/$'"

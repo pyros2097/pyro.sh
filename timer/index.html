@@ -12,7 +12,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
     <title>Timer</title>
     <script>
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('/timer/sw.js')
             .then(registration => {
                 registration.onupdatefound = () => {
                     const installingWorker = registration.installing;

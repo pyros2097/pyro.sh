@@ -11,15 +11,22 @@ jobs:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - name: Build
-        run: npm run build
+        run: npm run build-prod
       - name: Sync files
-        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          ftp_host: ${{ secrets.FTP_HOST }}
-          ftp_username: ${{ secrets.FTP_USERNAME }}
-          ftp_password: ${{ secrets.FTP_PASSWORD }}
-          local_source_dir: '.'
-          dist_target_dir: '.'
-          delete: "true"
-          only_newer: "true"
-          exclude: "'^\.git/$' '^\.github/$' '^_scripts/$'"
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /
+          exclude: .git*
+            - **.git*
+            - .git*/**
+            - **/.git*/**
+            - node_modules/**
+            - node_modules/**/*
+            - assets/audio/**/*
+            - package.json
+            - package-lock.json
+            - tailwind.config.js

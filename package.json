@@ -1,7 +1,12 @@
 {
   "name": "pyros.sh",
   "scripts": {
-    "start": "npx serve .",
-    "build": "npx tailwindcss-cli build ./assets/config.css -o ./assets/styles.css"
+    "start": "serve .",
+    "build": "tailwindcss-cli build ./assets/config.css -o ./assets/styles.css",
+    "build-prod": "npm run build --production"
+  },
+  "devDependencies": {
+    "serve": "^11.3.2",
+    "tailwindcss-cli": "^0.1.2"
   }
 }

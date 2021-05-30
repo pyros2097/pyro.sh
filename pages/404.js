@@ -1,0 +1,23 @@
+import { html } from 'web_modules/haunted.js';
+
+export const head = ({ config }) => {
+  return html`
+    <title>${config.title}</title>
+    <meta name="title" content="${config.title}" />
+    <meta name="description" content="${config.description}" />
+    <meta name="image" content="${config.image}" />
+    <link rel="canonical" href="${config.url}" />
+  `;
+};
+
+export const body = ({ config }) => {
+  return html`
+    <app-header></app-header>
+    <main class="flex flex-1 flex-col mt-20 items-center">
+      <h1 class="text-5xl">Page Not Found</h1>
+      <h2 class="text-lg mt-20">
+        <a class="underline" href="/">Go Back</a>
+      </h1>
+    </main>
+  `;
+};

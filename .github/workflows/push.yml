@@ -24,9 +24,11 @@ jobs:
             - **.git*
             - .git*/**
             - **/.git*/**
+            - _scripts/**
             - node_modules/**
             - node_modules/**/*
             - assets/audio/**/*
             - package.json
             - package-lock.json
-            - tailwind.config.js
+            - config.css
+            - tailwind.config.cjs

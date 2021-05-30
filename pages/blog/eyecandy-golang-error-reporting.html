@@ -1,0 +1,733 @@
+<div class="w-full flex flex-1 flex-row justify-center">
+  <div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
+    <div>
+      <div class="flex pb-4 border-black border-b">
+        <div class="flex-1 text-2xl font-bold">
+          Eyecandy Golang Error Reporting
+        </div>
+        <div class="mr-4">
+          September 17, 2016
+        </div>
+      </div>
+      <p class="text-black font-source mt-2">
+
+        We at playlyfe wanted to get an email report as soon as an error occurred on our production servers.
+        Since golang does not have stack traces
+        with its inbuilt error mechanism we had to find a quick and simple solution which wouldn’t require
+        too much refactoring of our existing
+        codebase. So this is how we went about accomplishing this task. First we decided to wrap our errors
+        so that we can get the runtime stack
+        whenever an error occurs. We first started using this
+        <a class="text-blue-800" href="https://github.com/go-errors/errors">
+          https://github.com/go-errors/errors
+        </a>
+        but soon found out that it wasn’t exactly suited for
+        our use case. So we created this minimalistic and easy approach to wrap all our existing errors.
+        First we decided to wrap our errors so that
+        we can get the runtime stack whenever an error occurs.
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        We first started using this
+        <a class="text-blue-800" href="https://github.com/go-errors/errors">
+          https://github.com/go-errors/errors
+        </a>
+        but soon found out that it wasn’t exactly suited for our use case.
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        So we created this minimalistic and easy approach to wrap all our existing errors.
+
+      </p>
+      <p class="bg-codebg font-monospace text-sm rounded-md py-1 px-4 my-3 mr-4">
+        <br>
+        <span class="text-codekeyword">
+          package
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          utils
+        </span>
+        <br>
+        <br>
+        <span class="text-codekeyword">
+          import
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codestring">
+          "bytes"
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codestring">
+          "database/sql"
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codestring">
+          "runtime"
+        </span>
+        <br>
+        <span class="text-codeconst">
+          )
+        </span>
+        <br>
+        <br>
+        <span class="text-codekeyword">
+          type
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          WrappedError
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          struct
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          Err
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          error
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          StackTrace
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          string
+        </span>
+        <br>
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        <br>
+        <span class="text-codekeyword">
+          func
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codetext">
+          e
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          *
+        </span>
+        <span class="text-codetext">
+          WrappedError
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codefunc">
+          Error
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          string
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          return
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          e
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codetext">
+          Err
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codefunc">
+          Error
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <br>
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        <br>
+        <span class="text-codekeyword">
+          func
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codefunc">
+          E
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codetext">
+          e
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          error
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          error
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          switch
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          e
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codekeyword">
+          type
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          case
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          *
+        </span>
+        <span class="text-codetext">
+          WrappedError
+        </span>
+        <span class="text-codeconst">
+          :
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          return
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          e
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          case
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          nil
+        </span>
+        <span class="text-codeconst">
+          :
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          return
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          nil
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          default
+        </span>
+        <span class="text-codeconst">
+          :
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          stackTrace
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          :=
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codefunc">
+          make
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codeconst">
+          [
+        </span>
+        <span class="text-codeconst">
+          ]
+        </span>
+        <span class="text-codekeyword">
+          byte
+        </span>
+        <span class="text-codeconst">
+          ,
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          1
+        </span>
+        <span class="text-codeconst">
+          &lt;&lt;
+        </span>
+        <span class="text-codeconst">
+          16
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          runtime
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codefunc">
+          Stack
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codetext">
+          stackTrace
+        </span>
+        <span class="text-codeconst">
+          ,
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          false
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          buffer
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          :=
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          &amp;
+        </span>
+        <span class="text-codetext">
+          bytes
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codetext">
+          Buffer
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          for
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          _
+        </span>
+        <span class="text-codeconst">
+          ,
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          a
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          :=
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codekeyword">
+          range
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          stackTrace
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          if
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          a
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          !=
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          0
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          buffer
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codefunc">
+          WriteByte
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codetext">
+          a
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codekeyword">
+          return
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codeconst">
+          &amp;
+        </span>
+        <span class="text-codetext">
+          WrappedError
+        </span>
+        <span class="text-codeconst">
+          {
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          Err
+        </span>
+        <span class="text-codeconst">
+          :
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          e
+        </span>
+        <span class="text-codeconst">
+          ,
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codetext">
+          StackTrace
+        </span>
+        <span class="text-codeconst">
+          :
+        </span>
+        <span class="text-codetext">
+
+        </span>
+        <span class="text-codetext">
+          buffer
+        </span>
+        <span class="text-codeconst">
+          .
+        </span>
+        <span class="text-codefunc">
+          String
+        </span>
+        <span class="text-codeconst">
+          (
+        </span>
+        <span class="text-codeconst">
+          )
+        </span>
+        <span class="text-codeconst">
+          ,
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        <span class="text-codeconst">
+          }
+        </span>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+      <p class="text-black font-source mt-2">
+
+        But then just sending the error stack in plain format to our emails wasn’t going to be nice to read
+        at all. We needed more information like context and session information and things like that. On top
+        of that I also wanted to make our stack traces prettier so that it would easier to figure out where
+        the error started from.
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        So to parse the error stack trace I found this cool library which does that for and on top of that
+        it also themes it very well
+        <a class="text-blue-800" href="https://github.com/maruel/panicparse">
+          https://github.com/maruel/panicparse
+        </a>
+        .
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        But then it didn’t properly expose an API to do it properly and after a few dabblings here (
+        <a class="text-blue-800" href="https://github.com/maruel/panicparse/issues/8">
+          https://github.com/maruel/panicparse/issues/8
+        </a>
+        ) with the developer and +1’s we got a proper api which I could use.
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        And now I haz got a prettier stack traces like this,
+
+      </p>
+      <div class="my-6">
+        <img src="/assets/images/terminal1.png">
+      </div>
+      <p class="text-black font-source mt-2">
+
+        So great I got ANSI coloring setup and the errors look great in our console but what about our
+        mails. Of course this wasn’t going to work since emails primarily render text and HTML only, and
+        ANSI color codes was going to make our messages a mess.
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        So then I went about digging github for an ANSI terminal codes to HTML converter so that it would
+        look exactly like this in my mail. And then I found this cool go library which does that
+        <a class="text-blue-800" href="https://github.com/buildkite/terminal">
+          https://github.com/buildkite/terminal
+        </a>
+
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        Now all emails require inline CSS or else they wouldn’t work so then I had to find out a way to do
+        that too.
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        And this was it
+        <a class="text-blue-800" href="https://github.com/aymerick/douceur">
+          https://github.com/aymerick/douceur
+        </a>
+
+
+      </p>
+      <p class="text-black font-source mt-2">
+
+        Finally after messing around with so many libraries I got around to getting it to work and this is
+        how it looks in my email,
+
+      </p>
+      <div class="my-6">
+        <img src="/assets/images/terminal2.png">
+      </div>
+      <p class="text-black font-source mt-2">
+
+        And in our production systems our errors look like this,
+
+      </p>
+      <div class="my-6">
+        <img src="/assets/images/terminal3.png">
+      </div>
+      <p class="text-black font-source mt-2">
+
+        So I’ve created a small utility library which I generally use for my side-projects and has this code
+        in it. You can see the full code here,
+
+      </p>
+      <div class="my-4">
+        <a href="https://github.com/pyros2097/golem" class="text-blue-800">
+          https://github.com/pyros2097/golem
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

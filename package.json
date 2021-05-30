@@ -1,12 +1,28 @@
 {
-  "name": "pyros.sh",
+  "type": "module",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
-    "start": "serve .",
-    "build": "tailwindcss-cli build ./assets/config.css -o ./assets/styles.css",
-    "build-prod": "npm run build --production"
+    "start": "density dev",
+    "build": "density build",
+    "serve": "serve public"
+  },
+  "dependencies": {
+    "date-fns": "^2.21.3",
+    "haunted": "^4.8.0",
+    "highlight.js": "^11.0.0",
+    "lit": "^2.0.0-rc.2",
+    "web_modules": "file:./public/web_modules"
   },
   "devDependencies": {
-    "serve": "^11.3.2",
-    "tailwindcss-cli": "^0.1.2"
-  }
+    "density-ssg": "^0.6.0",
+    "serve": "^11.3.2"
+  },
+  "web_modules": [
+    "haunted",
+    "date-fns/format",
+    "highlight.js/lib/core",
+    "highlight.js/lib/languages/javascript"
+  ]
 }

@@ -9,26 +9,20 @@ jobs:
     name: Build and test and push
     steps:
       - uses: actions/checkout@v2
-      - uses: bahmutov/npm-install@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install
+        run: npm i
       - name: Build
-        run: npm run build-prod
+        run: npm run build
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
+          local-dir: ./public/
           server-dir: /
-          exclude: .git*
-            - **.git*
-            - .git*/**
-            - **/.git*/**
-            - _scripts/**
-            - node_modules/**
-            - node_modules/**/*
+          exclude: assets/audio*
             - assets/audio/**/*
-            - package.json
-            - package-lock.json
-            - config.css
-            - tailwind.config.cjs

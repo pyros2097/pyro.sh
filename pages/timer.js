@@ -75,10 +75,9 @@ function timer(minutes) {
 }
 
 export const head = ({ config }) => {
-  const title = `Timer`;
+  const title = `${config.title} - Timer`;
   return html`
     <title>${title}</title>
-    <meta name="title" content="${config.title}" />
     <meta name="description" content="${config.description}" />
     <meta name="image" content="${config.image}" />
     <meta name="keywords" content="${config.keywords}" />
@@ -86,7 +85,7 @@ export const head = ({ config }) => {
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${config.url}" />
     <meta property="og:site_name" content="${config.siteName}" />
-    <meta property="og:title" content="${config.title}" />
+    <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${config.description}" />
     <meta property="og:image" content="${config.image}" />
     <link rel="canonical" href="${config.url}" />

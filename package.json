@@ -13,16 +13,17 @@
     "haunted": "^4.8.0",
     "highlight.js": "^11.0.0",
     "lit": "^2.0.0-rc.2",
-    "web_modules": "file:./public/web_modules"
+    "web_modules": "file:./public/assets/web_modules"
   },
   "devDependencies": {
-    "density-ssg": "^0.7.0",
+    "density-ssg": "^0.8.0",
     "serve": "^11.3.2"
   },
   "web_modules": [
     "haunted",
     "date-fns/format",
     "highlight.js/lib/core",
+    "highlight.js/lib/languages/go",
     "highlight.js/lib/languages/javascript"
   ]
 }

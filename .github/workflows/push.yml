@@ -16,6 +16,8 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
+      - name: Add BunnyCDN fallback
+        run: mv ./public/404 ./public/bunnycdn_errors
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:

@@ -143,11 +143,10 @@ function bibleApp() {
 }
 
 export const head = ({ config }) => {
-  const title = `Indian Bible App`;
+  const title = `${config.title} - Indian Bible App`;
   const description = `Indian Bible App`;
   return html`
     <title>${title}</title>
-    <meta name="title" content="${title}" />
     <meta name="description" content="${description}" />
     <meta name="image" content="${config.image}" />
     <meta name="keywords" content="indian,bible,app,kannada" />
@@ -159,27 +158,6 @@ export const head = ({ config }) => {
     <meta property="og:description" content="${description}" />
     <meta property="og:image" content="${config.image}" />
     <link rel="canonical" href="${config.url}" />
-    <script>
-      navigator.serviceWorker.register('/bible/sw.js').then((reg) => {
-        reg.onupdatefound = () => {
-          const installing = reg.installing;
-          if (installing == null) {
-            return;
-          }
-          installing.onstatechange = () => {
-            if (installing.state === 'installed') {
-              if (navigator.serviceWorker.controller) {
-                reg.update();
-                alert('A new Version of the app is Available. Updating Now.');
-                window.location.reload();
-              } else {
-                console.log('Content is cached for offline use.');
-              }
-            }
-          };
-        };
-      });
-    </script>
     <script src="/assets/alpine.js" defer></script>
   `;
 };

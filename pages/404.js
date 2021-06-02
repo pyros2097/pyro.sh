@@ -1,9 +1,10 @@
 import { html } from 'web_modules/haunted.js';
 
 export const head = ({ config }) => {
+  const title = `${config.title} - Not Found`;
   return html`
-    <title>${config.title}</title>
-    <meta name="title" content="${config.title}" />
+    <title>${title}</title>
+    <meta name="title" content="${title}" />
     <meta name="description" content="${config.description}" />
     <meta name="image" content="${config.image}" />
     <link rel="canonical" href="${config.url}" />

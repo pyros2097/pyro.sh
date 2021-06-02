@@ -4,7 +4,6 @@ export const head = ({ config }) => {
   const title = `${config.title} - Reference`;
   return html`
     <title>${title}</title>
-    <meta name="title" content="${title}" />
     <meta name="description" content="${config.description}" />
     <meta name="image" content="${config.image}" />
     <meta name="keywords" content="${config.keywords}" />

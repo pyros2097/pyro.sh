@@ -1,4 +1,4 @@
-name: 🚀 Deploy website on push
+name: Deploy
 on:
   push:
     branches:

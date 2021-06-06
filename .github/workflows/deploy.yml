@@ -4,9 +4,9 @@ on:
     branches:
       - master
 jobs:
-  build-and-test-and-push:
+  deploy:
     runs-on: ubuntu-latest
-    name: Build and test and push
+    name: Deploy
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -30,3 +30,6 @@ jobs:
           server-dir: /
           exclude: assets/audio*
             - assets/audio/**/*
+      - name: Purge
+        run: |
+          curl -i --fail -X POST -H "AccessKey: ${{ secrets.BCDN_API_TOKEN }}" -H "Content-Length: 0" https://api.bunny.net/pullzone/392667/purgeCache

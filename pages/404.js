@@ -7,7 +7,6 @@ export const head = ({ config }) => {
     <meta name="title" content="${title}" />
     <meta name="description" content="${config.description}" />
     <meta name="image" content="${config.image}" />
-    <link rel="canonical" href="${config.url}" />
   `;
 };
 

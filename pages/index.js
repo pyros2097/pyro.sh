@@ -44,7 +44,6 @@ export const head = ({ config }) => {
     <meta property="og:title" content="${config.title}" />
     <meta property="og:description" content="${config.description}" />
     <meta property="og:image" content="${config.image}" />
-    <link rel="canonical" href="${config.url}" />
     <link rel="alternate icon" type="image/png" href="/assets/icon.png" />
     <link rel="apple-touch-icon" type="image/png" href="/assets/icon.png" />
     <script src="/assets/alpine.js" defer></script>

@@ -16,7 +16,7 @@
     "web_modules": "file:./public/assets/web_modules"
   },
   "devDependencies": {
-    "density-ssg": "^0.8.0",
+    "density-ssg": "^0.9.0",
     "serve": "^11.3.2"
   },
   "web_modules": [

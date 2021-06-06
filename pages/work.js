@@ -14,7 +14,6 @@ export const head = ({ config }) => {
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${config.description}" />
     <meta property="og:image" content="${config.image}" />
-    <link rel="canonical" href="${config.url}" />
   `;
 };
 

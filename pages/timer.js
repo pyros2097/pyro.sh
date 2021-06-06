@@ -95,7 +95,6 @@ export const head = ({ config }) => {
 
 export const body = () => {
   return html`
-    <app-header></app-header>
     <script>
       ${timer.toString()};
     </script>

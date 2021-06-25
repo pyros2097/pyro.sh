@@ -1,4 +1,5 @@
-import { html } from 'web_modules/haunted.js';
+import { html } from '../../web_modules/fuco.js';
+import '../elements/app-header.js';
 
 export const head = ({ config }) => {
   const title = `${config.title} - Reference`;

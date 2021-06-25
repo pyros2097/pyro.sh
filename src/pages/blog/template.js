@@ -1,8 +1,6 @@
-import { html } from 'web_modules/haunted.js';
-import hljs from 'web_modules/highlightjs/lib/core.js';
-import go from 'web_modules/highlightjs/lib/languages/go.js';
-
-hljs.registerLanguage('go', go);
+import { html, unsafeHTML } from '../../../web_modules/fuco.js';
+import hljs from '../../../web_modules/highlightjs.js';
+import '../../elements/app-header.js';
 
 export const head = ({ config, item }) => {
   return html`
@@ -40,15 +38,8 @@ export const body = ({ item }) => {
                   if (text) {
                     if (text.code) {
                       const codeblock = hljs.highlight(text.code, { language: 'go' });
-                      return html`<p class="font-source mt-2">${codeblock.value}</p>`;
-                      // return html`
-                      //   <p class="bg-codebg font-monospace text-sm rounded-md py-1 px-4 my-3 mr-4">
-                      //     <br />${text.code.split('\n').map((line) => {
-                      //       console.log(line.length);
-                      //       return html`${line}<br />`;
-                      //     })}
-                      //   </p>
-                      // `;
+                      // bg-codebg font-monospace text-sm rounded-md py-1 px-4 my-3 mr-4
+                      return html`<p class="font-source mt-2">${unsafeHTML(codeblock.value)}</p>`;
                     }
                     if (text.img) {
                       return html`<div class="my-6"><img src="${text.img}" /></div>`;

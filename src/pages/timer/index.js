@@ -1,4 +1,4 @@
-import { html, useState, useRef } from 'web_modules/haunted.js';
+import { html, useState, useRef } from '../../../web_modules/fuco.js';
 
 export const head = ({ config }) => {
   const title = `${config.title} - Timer`;

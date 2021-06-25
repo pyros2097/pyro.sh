@@ -1,4 +1,4 @@
-import { html, useState, useEffect, useRef } from 'web_modules/haunted.js';
+import { html, useState, useEffect, useRef } from '../../../web_modules/fuco.js';
 
 export const head = ({ config, item }) => {
   const title = `${config.title} - ${item.title} Bible`;

@@ -1,4 +1,4 @@
-import { html } from 'web_modules/haunted.js';
+import { html, defineElement } from '../../web_modules/fuco.js';
 
 const Header = () => {
   return html`
@@ -25,4 +25,4 @@ const Header = () => {
   `;
 };
 
-export default Header;
+defineElement('app-header', Header);

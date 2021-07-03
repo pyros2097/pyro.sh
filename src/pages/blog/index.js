@@ -1,4 +1,4 @@
-import { html } from '../../../web_modules/fuco.js';
+import { html } from 'atoms-element';
 import '../../elements/app-header.js';
 
 export const head = ({ config }) => {
@@ -37,7 +37,7 @@ export const body = ({ data }) => {
                     </div>
                     <div class="">${item.uploadedOn}</div>
                   </div>
-                `
+                `,
               )}
             </div>
           </div>

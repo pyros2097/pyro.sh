@@ -1,4 +1,4 @@
-import { html } from '../../web_modules/fuco.js';
+import { html } from 'atoms-element';
 import '../elements/app-header.js';
 
 export const head = ({ config }) => {
@@ -35,15 +35,14 @@ export const body = () => {
                 <div>
                   <div class="text-2xl font-bold mt-8">iOWNA</div>
                   <div>
-                    iOWNA is a digital app that provides clinicians with a library of trusted guidance in a patient friendly format that they have at
-                    their fingertips to distribute to their patients to improve outcomes and enable people live longer healthier lives.
+                    iOWNA is a digital app that provides clinicians with a library of trusted guidance in a patient friendly format that they have at their
+                    fingertips to distribute to their patients to improve outcomes and enable people live longer healthier lives.
                   </div>
                 </div>
                 <div>
                   <div class="text-2xl font-bold mt-8">LifeBox</div>
                   <div>
-                    LifeBox is a smart ePOA and health record system which supports pre-surgical patient assessment, hospital decision-making and
-                    treatment.
+                    LifeBox is a smart ePOA and health record system which supports pre-surgical patient assessment, hospital decision-making and treatment.
                   </div>
                 </div>
                 <div>
@@ -57,8 +56,8 @@ export const body = () => {
                 <div>
                   <div class="text-2xl font-bold mt-8">Catalyst</div>
                   <div>
-                    An employee engagement app built using the playlyfe v3 gamification api. Used by the likes of HP, Accenture to improve their call
-                    center performance metrics.
+                    An employee engagement app built using the playlyfe v3 gamification api. Used by the likes of HP, Accenture to improve their call center
+                    performance metrics.
                   </div>
                 </div>
                 <div>

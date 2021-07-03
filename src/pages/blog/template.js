@@ -1,5 +1,5 @@
-import { html, unsafeHTML } from '../../../web_modules/fuco.js';
-import hljs from '../../../web_modules/highlightjs.js';
+import { html, unsafeHTML } from 'atoms-element';
+import hljs from 'highlight.js';
 import '../../elements/app-header.js';
 
 export const head = ({ config, item }) => {

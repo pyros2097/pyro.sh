@@ -1,4 +1,4 @@
-import { html, classMap, useState } from '../../web_modules/fuco.js';
+import { html, classMap } from 'atoms-element';
 import '../elements/app-header.js';
 import '../elements/app-slide.js';
 
@@ -63,7 +63,8 @@ const slides = [
 ];
 
 export const body = () => {
-  const [item, setItem] = useState(0);
+  // const [item, setItem] = useState(0);
+  const item = 0;
   const currentSlide = slides[item];
   return html`
     <app-header></app-header>

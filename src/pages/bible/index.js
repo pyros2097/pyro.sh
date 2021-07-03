@@ -1,4 +1,4 @@
-import { html } from '../../../web_modules/fuco.js';
+import { html } from 'atoms-element';
 
 export const head = ({ config }) => {
   const title = `${config.title} - Indian Bible App`;
@@ -33,7 +33,7 @@ export const body = ({ data }) => {
                 <a href="/bible/${item.slug}" class="bg-gray-300 text-gray-900 text-3xl rounded hover:bg-gray-200 px-8 py-4 focus:outline-none mx-10">
                   ${item.title}
                 </a>
-              `
+              `,
             )}
           </div>
         </div>

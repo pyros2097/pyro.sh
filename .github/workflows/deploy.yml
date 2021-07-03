@@ -14,6 +14,8 @@ jobs:
           node-version: '14'
       - name: Install
         run: npm i
+      - name: ESM Install
+        run: npm run esinstall
       - name: Build
         run: npm run build
       - name: Add BunnyCDN fallback

@@ -7,14 +7,44 @@
     "dev": "density dev",
     "build": "density build",
     "preview": "density preview",
-    "esinstall": "density install"
+    "esinstall": "density install",
+    "lint": "eslint src",
+    "pretty": "prettier src --write"
   },
   "dependencies": {
-    "@popeindustries/lit-html-server": "^3.1.0",
-    "highlight.js": "^11.0.1",
-    "lit-html": "1.4.1"
+    "atoms-element": "^1.0.0",
+    "highlight.js": "^11.0.0"
   },
   "devDependencies": {
-    "density-ssg": "^1.3.0"
+    "density-ssg": "^2.1.0",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-lit": "^1.5.1",
+    "eslint-plugin-lit-a11y": "^1.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "prettier": "2.3.2"
+  },
+  "eslintConfig": {
+    "globals": {
+      "window": "writable"
+    },
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:node/recommended",
+      "plugin:lit/recommended",
+      "plugin:lit-a11y/recommended",
+      "prettier"
+    ],
+    "rules": {}
+  },
+  "prettier": {
+    "printWidth": 160,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all"
   }
 }

@@ -1,4 +1,4 @@
-import { html, defineElement } from '../../web_modules/fuco.js';
+import { html, defineElement } from 'atoms-element';
 
 const Header = () => {
   return html`

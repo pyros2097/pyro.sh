@@ -26,9 +26,9 @@ export const body = () => {
         <div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
           <div>
             <div>
-              Programming is my passion. I've been coding from a very young age and still do so. I have created and contributed to many open source
-              projects. My main interest lies in is backend, frontend, and devops. I build frameworks and automate common tasks to make it easier to
-              develop applications. I do occasionally work on creating 2d games.
+              Programming is my passion. I've been coding from a very young age and still do so. I have created and contributed to many open source projects. My
+              main interest lies in frontend, backend, and devops. I build frameworks and automate common tasks to make it easier to develop applications. I do
+              occasionally work on creating 2d games.
             </div>
             <div class="flex flex-1 flex-col">
               <div class="text-2xl font-bold mt-6">Experience</div>
@@ -42,27 +42,41 @@ export const body = () => {
                   These are the client projects I worked on,
                   <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
                     <li>
+                      John Lewis
+                      <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+                        <li>Built the new Product Description Page (PDP) for Simple Carpets using JLDP blueprint template (nextjs) in team-home-interiors</li>
+                        <li>Helped build, improve, and run AB experiments in the customer services and my orders pages in team-selfserve</li>
+                      </ul>
+                    </li>
+                    <li>
                       iOWNA
                       <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
                         <li>Built a content editor for curators to create content on our platform</li>
-                        <li>Built the iOWNA crossplatform app in react-native that works in android, ios, web. One codebase.</li>
+                        <li>Built the iOWNA crossplatform app in react-native that works in android, ios, web. One codebase</li>
+                        <li>Implemented admin specific functionalities in the web app</li>
+                        <li>Implemented an in-app OTA update method using expo and semantic versionin</li>
+                        <li>Built the iOWNA marketing website</li>
+                        <li>Built the Health Questionnaire clinician/patient feedback form feature with push notifications</li>
                       </ul>
                     </li>
                     <li>
                       Zeta
                       <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
-                        <li>Used k8s operator framework to automate creating acls in sandbox using custom resources</li>
-                        <li>Created a Groovy Script to automate creating acls in sandbox authorization framework</li>
-                        <li>Added multiple formats(pdf,html,xlsx) to download reports in Report Center</li>
+                        <li>Added multiple download formats (pdf,html,xlsx) for reports in the Reporting Center</li>
+                        <li>Created a Groovy Script to automate creating ACL's in sandbox authorization framework</li>
                         <li>Integrated Camunda Workflow Engine into Zeta services in Operations Center</li>
+                        <li>Built a few workflows on Camunda and integrated it with some internal services</li>
+                        <li>Built a custom k8s CRD using the operator framework to automate creating ACL's in sandbox using custom resources</li>
                       </ul>
                     </li>
                     <li>
                       Lifebox
                       <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
-                        <li>Added search functionaLity to the hospital procedure codes</li>
-                        <li>Converted the Health Questionnaire from json to go structs/funcs making it easier to make changes to it</li>
+                        <li>Added search functionality to the hospital procedure codes</li>
+                        <li>Converted the Health Questionnaire from json to native go code making it easier to make changes to it</li>
                         <li>Integrated with SAP using HL7 message format to create patients, episodes, schedule/cancel procedures</li>
+                        <li>Built the Patient Document repository for uploading, downloading patient files</li>
+                        <li>Built the patients online reports view using the data from SAP</li>
                       </ul>
                     </li>
                   </ul>
@@ -72,9 +86,9 @@ export const body = () => {
                 <div class="text-xl font-bold mt-6">Numberz</div>
                 <div class="text-lg font-semibold mt-1">Full Stack Developer, Sept 2016 - Oct 2018</div>
                 <p class="text-black font-source mt-2">
-                  Numberz integrates banking with your day-2-day business work-flows freeing up a lot of effort, time and heart-burn, to help your
-                  business grow! You’ll never have to spend time syncing information between different systems. Save and record receipts &amp; spends
-                  with a single tap, automatically categorise transactions for book-keeping and easily share information with your accountant.
+                  Numberz integrates banking with your day-2-day business work-flows freeing up a lot of effort, time and heart-burn, to help your business
+                  grow! You’ll never have to spend time syncing information between different systems. Save and record receipts &amp; spends with a single tap,
+                  automatically categorise transactions for book-keeping and easily share information with your accountant.
                 </p>
                 <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
                   <li>Implemented new features and fixed bugz on the numberz android app</li>
@@ -84,15 +98,13 @@ export const body = () => {
                   <li>Started tech talks on Thursdays to discuss cutting edge technologies</li>
                   <li>Architected and built the Notification Service using rabbitmq and nodejs</li>
                   <li>Built the Multi-User and Multi-Company Features</li>
-                  <li>
-                    Implemented and lead a team on integration with the GSTN System so that customers could file their GST Taxes within our product
-                  </li>
+                  <li>Implemented and lead a team on integration with the GSTN System so that customers could file their GST Taxes within our product</li>
                   <li>Architected and built the numberz Identity Management Service(IMS)</li>
                   <li>Architected our new product called the Numberz Accounts Receivable (AR)</li>
                   <li>Laid down the architecture for the frontend and backend</li>
                   <li>
-                    Built these core features for our new AR Product - Auto Reminders, Manual Reminders, User Management, Cash Discounting, CFO
-                    Dashboard Metrics
+                    Built these core features for our new AR Product - Auto Reminders, Manual Reminders, User Management, Cash Discounting, CFO Dashboard
+                    Metrics
                   </li>
                 </ul>
               </div>
@@ -100,10 +112,9 @@ export const body = () => {
                 <div class="text-xl font-bold mt-6">Playlyfe</div>
                 <div class="text-lg font-semibold mt-1">Full Stack Developer, Apr 2014 - Sept 2016</div>
                 <p class="text-black font-source mt-2">
-                  Playlyfe is an online Gamification Platform which empowers anyone to design and implement a gamified system.This platform allows a
-                  normal user to convert a gamified system's design into a fully functional web-application complete with teams, real-time
-                  notifications, leaderboards and many more features. Made Critical decisions on what tech stack to switch to for our gamification
-                  product Catalyst.
+                  Playlyfe is an online Gamification Platform which empowers anyone to design and implement a gamified system.This platform allows a normal user
+                  to convert a gamified system's design into a fully functional web-application complete with teams, real-time notifications, leaderboards and
+                  many more features. Made Critical decisions on what tech stack to switch to for our gamification product Catalyst.
                 </p>
                 <ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
                   <li>Built the Playlyfe Hybrid Mobile app using Phonegap for Android and iOS</li>

@@ -1,5 +1,6 @@
+public
 node_modules
 web_modules
 .DS_Store
-public
-assets/styles.css
+assets/css/styles.css
+assets/screens

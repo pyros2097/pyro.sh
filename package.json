@@ -12,11 +12,11 @@
     "pretty": "prettier src --write"
   },
   "dependencies": {
-    "atoms-element": "^1.0.0",
+    "atoms-element": "^1.1.0",
     "highlight.js": "^11.0.0"
   },
   "devDependencies": {
-    "density-ssg": "^2.1.0",
+    "density-ssg": "^2.2.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-lit": "^1.5.1",

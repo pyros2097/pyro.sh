@@ -1,6 +1,6 @@
-import { html, classMap } from 'atoms-element';
+import { html } from 'atoms-element';
 import '../elements/app-header.js';
-import '../elements/app-slide.js';
+import '../elements/app-slider.js';
 
 export const head = ({ config }) => {
   return html`
@@ -63,9 +63,6 @@ const slides = [
 ];
 
 export const body = () => {
-  // const [item, setItem] = useState(0);
-  const item = 0;
-  const currentSlide = slides[item];
   return html`
     <app-header></app-header>
     <main class="w-full h-full">
@@ -81,37 +78,7 @@ export const body = () => {
               </p>
             </div>
             <article>
-              <div class="pt-10">
-                <ul class="flex flex-row mb-4">
-                  ${slides.map((_, index) => {
-                    const selected = index === item;
-                    return html`
-                      <li
-                        @click=${() => setItem(index)}
-                        class="px-3 py-1 cursor-pointer select-none ${classMap({
-                          'bg-black': selected,
-                          'text-white': selected,
-                          'hover:bg-gray-300': index !== item,
-                        })}"
-                      >
-                        ${index + 1}
-                      </li>
-                    `;
-                  })}
-                </ul>
-                <div class="bg-slider mb-8 rounded-sm overflow-hidden">
-                  <div class="flex flex-row relative w-full overflow-hidden">
-                    <app-slide
-                      title=${currentSlide.title}
-                      subTitle=${currentSlide.subTitle}
-                      description=${currentSlide.description}
-                      imgSrc=${currentSlide.imgSrc}
-                      imgWidth=${currentSlide.imgWidth}
-                    >
-                    </app-slide>
-                  </div>
-                </div>
-              </div>
+              <app-slider items=${slides}></app-slider>
             </article>
             <div class="flex flex-col sm:flex-row">
               <div class="flex flex-1 flex-col">

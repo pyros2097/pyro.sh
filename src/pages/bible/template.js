@@ -21,7 +21,6 @@ export const head = ({ config, item }) => {
 };
 
 export const body = ({ item }) => {
-  console.log('item', item);
   return html`
     <main class="w-full h-full flex flex-row">
       <app-bible class="w-full h-full" item=${item}></app-bible>

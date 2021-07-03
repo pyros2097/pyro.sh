@@ -7,7 +7,7 @@ const attrTypes = {
 };
 
 const Bible = ({ item }) => {
-  const isMobile = window.innerWidth < 600;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 600;
   const [bible, setBible] = useState();
   const [book, setBook] = useState();
   const [chapter, setChapter] = useState();

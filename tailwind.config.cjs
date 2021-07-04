@@ -10,7 +10,7 @@ module.exports = {
       },
       fontFamily: {
         body: ['Helvetica'],
-        source: ['Source Code Pro for Powerline', 'serif'],
+        source: ['serif'],
         monospace: ['monospace'],
       },
       colors: {

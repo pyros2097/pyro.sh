@@ -23,10 +23,10 @@ export const head = ({ config }) => {
 const slides = [
   {
     title: 'Website',
-    subTitle: 'This website is hosted on a Raspberry Pi 4 with 4GB RAM. The host IP is 106.51.19.44.',
-    description: 'Makes it easier for me to deploy stuff to immediately. But at the consequence of higher latency for people living outside India.',
-    imgSrc: '/assets/images/pi4.jpg',
-    imgWidth: '300',
+    subTitle: '',
+    description: 'It is hosted on BunnyCDN. It has a perfect score on the lighthouse test.',
+    imgSrc: '/assets/images/lighthouse.png',
+    imgWidth: '100%',
   },
   {
     title: 'rust-embed',
@@ -50,7 +50,7 @@ const slides = [
     description:
       'first class functions clean syntax basics: int, float, bool, byte, enum references: string, array, map, nil, error functions: extern, proc, method, test conditions: if, elif, else, match, break, continue loops: for inbuilt: echo, assert',
     imgSrc: '/assets/images/pine.png',
-    imgWidth: '50%',
+    imgWidth: '40%',
   },
   {
     title: 'Gdx Studio',
@@ -85,7 +85,7 @@ export const body = () => {
                 <div>
                   <div class="text-2xl font-bold mt-6"><i class="icon-sitemap"></i>Interests</div>
                   <div class="mt-6">These are some of the stuff I work on</div>
-                  <div class="grid grid-cols-3 gap-2 mt-6">
+                  <ul class="ml-6 list-disc grid grid-cols-3 gap-2 mt-6">
                     <li>HTML</li>
                     <li>Javascript</li>
                     <li>CSS</li>
@@ -97,19 +97,19 @@ export const body = () => {
                     <li>Java</li>
                     <li>Reactjs</li>
                     <li>Serverless</li>
-                    <li>Alpinejs</li>
-                  </div>
+                    <li>Web Components</li>
+                  </ul>
                 </div>
               </div>
               <div class="flex flex-1 flex-col">
                 <div>
                   <div class="text-2xl font-bold mt-6"><i class="icon-chat"></i> Contact</div>
                   <div class="mt-6">You can contact me through any of these methods</div>
-                  <div class="mt-6 text-lg">
-                    <div>Email: <a class="text-md text-newblue ml-1" href="mailto:pyros2097@gmail.com">pyros2097@gmail.com</a></div>
-                    <div class="mt-2">Github: <a class="text-md text-newblue ml-1" href="https://github.com/pyros2097">pyros2097</a></div>
-                    <div class="mt-2">LinkedIn: <a class="text-md text-newblue ml-1" href="https://www.linkedin.com/in/pyros2097">pyros2097</a></div>
-                  </div>
+                  <ul class="mt-6 ml-6 list-disc text-lg grid grid-cols-1 gap-2">
+                    <li>Email: <a class="link ml-2" href="mailto:pyros2097@gmail.com">pyros2097@gmail.com</a></li>
+                    <li>Github: <a class="link ml-2" href="https://github.com/pyros2097">pyros2097</a></li>
+                    <li>LinkedIn: <a class="link ml-2" href="https://www.linkedin.com/in/pyros2097">pyros2097</a></li>
+                  </ul>
                 </div>
               </div>
             </div>

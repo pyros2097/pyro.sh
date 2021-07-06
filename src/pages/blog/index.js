@@ -26,19 +26,21 @@ export const body = ({ data }) => {
         <div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
           <div class="flex flex-1 flex-col">
             <div class="flex flex-1 flex-col">
-              ${data.blog.map(
-                (item) => html`
-                  <div class="flex flex-1 flex-row mt-2">
-                    <div class="flex-1">
-                      <div>
-                        ▪
-                        <a class="ml-2 border-b border-black" href="${item.permaLink}"> ${item.title} </a>
+              ${data.blog
+                .sort((a, b) => (b.uploadedOn > a.uploadedOn ? -1 : 1))
+                .map(
+                  (item) => html`
+                    <div class="flex flex-1 flex-row mt-2">
+                      <div class="flex-1">
+                        <div>
+                          ▪
+                          <a class="ml-2 border-b border-black" href="${item.permaLink}"> ${item.title} </a>
+                        </div>
                       </div>
+                      <div class="">${item.uploadedOn}</div>
                     </div>
-                    <div class="">${item.uploadedOn}</div>
-                  </div>
-                `,
-              )}
+                  `,
+                )}
             </div>
           </div>
         </div>

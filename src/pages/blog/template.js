@@ -17,7 +17,7 @@ export const head = ({ config, item }) => {
     <meta property="og:description" content="${config.description}" />
     <meta property="og:image" content="${config.image}" />
     <link rel="canonical" href="${config.url}" />
-    <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.0.0/styles/default.min.css" />
+    <link rel="stylesheet" href="/assets/css/dracula.css" />
   `;
 };
 
@@ -37,12 +37,16 @@ export const body = ({ item }) => {
                 ${item.description.map((text) => {
                   if (text) {
                     if (text.code) {
-                      const codeblock = hljs.highlight(text.code, { language: 'go' });
+                      const codeblock = hljs.highlight(text.code, { language: text.language });
                       // bg-codebg font-monospace text-sm rounded-md py-1 px-4 my-3 mr-4
-                      return html`<p class="font-source mt-2">${unsafeHTML(codeblock.value)}</p>`;
+                      return html`<pre>
+                        <code class="language-${text.language} hljs font-mono text-xs rounded-3xl">
+                          ${unsafeHTML(codeblock.value)}
+                        </code>
+                      </pre>`;
                     }
                     if (text.img) {
-                      return html`<div class="my-6"><img src="${text.img}" /></div>`;
+                      return html`<div class="my-6"><img src="${text.img}" alt="${text.img}" /></div>`;
                     }
                     return html` <p class="text-black font-source mt-2">${text}</p> `;
                   }

@@ -1,26 +1,22 @@
-title: Eyecandy Golang Error Reporting
+title: Eyecandy golang error reporting
 uploadedOn: September 17, 2016
 description:
   - We at playlyfe wanted to get an email report as soon as an error occurred on our production servers. Since golang does not have
     stack traces with its inbuilt error mechanism we had to find a quick and simple solution which wouldn’t require too much refactoring
     of our existing codebase. So this is how we went about accomplishing this task. First we decided to wrap our errors so that we can
-    get the runtime stack whenever an error occurs. We first started using this
-    <a class="text-blue-800" href="https://github.com/go-errors/errors">
+    get the runtime stack whenever an error occurs.
+
+  - We first started using this
+    <a class="text-blue-800" href="https://github.com/go-errors/errors" target="_blank" rel="noopener noreferrer">
     https://github.com/go-errors/errors
     </a>
     but soon found out that it wasn’t exactly suited for our use case. So we created this minimalistic and easy approach to wrap all our
     existing errors. First we decided to wrap our errors so that we can get the runtime stack whenever an error occurs.
 
-  - We first started using this
-    <a class="text-blue-800" href="https://github.com/go-errors/errors">
-    https://github.com/go-errors/errors
-    </a>
-    but soon found out that it wasn’t exactly suited for our use case.
+  - language: go
+    code: |
 
-  - So we created this minimalistic and easy approach to wrap all our existing errors.
-
-  - code: |
-      package utils 
+      package utils
 
       import ( 
           "bytes" 
@@ -64,19 +60,19 @@ description:
     prettier so that it would easier to figure out where the error started from.
 
   - So to parse the error stack trace I found this cool library which does that for and on top of that it also themes it very well
-    <a class="text-blue-800" href="https://github.com/maruel/panicparse">
+    <a class="text-blue-800" href="https://github.com/maruel/panicparse" target="_blank" rel="noopener noreferrer">
     https://github.com/maruel/panicparse
     </a>
 
   - But then it didn’t properly expose an API to do it properly and after a few dabblings here
-    <a class="text-blue-800" href="https://github.com/maruel/panicparse/issues/8">
+    <a class="text-blue-800" href="https://github.com/maruel/panicparse/issues/8" target="_blank" rel="noopener noreferrer">
     https://github.com/maruel/panicparse/issues/8
     </a>
     with the developer and +1’s we got a proper api which I could use.
 
   - And now I haz got a prettier stack traces like this,
 
-  - img: /assets/images/terminal1.png
+  - img: /assets/images/email1.png
 
   - So great I got ANSI coloring setup and the errors look great in our console but what about our
     mails. Of course this wasn’t going to work since emails primarily render text and HTML only, and
@@ -84,7 +80,7 @@ description:
 
   - So then I went about digging github for an ANSI terminal codes to HTML converter so that it would
     look exactly like this in my mail. And then I found this cool go library which does that
-    <a class="text-blue-800" href="https://github.com/buildkite/terminal">
+    <a class="text-blue-800" href="https://github.com/buildkite/terminal" target="_blank" rel="noopener noreferrer">
     https://github.com/buildkite/terminal
     </a>
 
@@ -92,14 +88,14 @@ description:
     that too.
 
   - And this was it
-    <a class="text-blue-800" href="https://github.com/aymerick/douceur">
+    <a class="text-blue-800" href="https://github.com/aymerick/douceur" target="_blank" rel="noopener noreferrer">
     https://github.com/aymerick/douceur
     </a>
 
   - Finally after messing around with so many libraries I got around to getting it to work and this is how it looks in my email,
 
-  - img: /assets/images/terminal2.png
+  - img: /assets/images/email1.png
 
   - And in our production systems our errors look like this,
 
-  - img: /assets/images/terminal3.png
+  - img: /assets/images/email2.png

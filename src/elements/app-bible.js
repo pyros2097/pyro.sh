@@ -1,4 +1,5 @@
 import { html, defineElement, useState, useEffect, useRef, object, string } from 'atoms-element';
+import './icons/icon-spinner.js';
 
 const attrTypes = {
   item: object({
@@ -71,7 +72,7 @@ const Bible = ({ item }) => {
   if (loading) {
     return html`
       <div class="h-full w-full flex flex-col items-center justify-center">
-        <h4 class="font-normal text-xl">Loading</h4>
+        <icon-spinner></icon-spinner>
       </div>
     `;
   }

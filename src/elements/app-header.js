@@ -13,11 +13,6 @@ const Header = () => {
               <a class="px-2 mx-1 hover:bg-gray-700" href="/ref"> ref </a>
               <div class="text-lg">|</div>
               <a class="px-2 mx-1 hover:bg-gray-700" href="/blog"> blog </a>
-              <div class="text-lg">|</div>
-              <a class="px-2 mx-1 hover:bg-gray-700" href="/bible"> bible </a>
-              <div class="text-lg">|</div>
-              <a class="px-2 mx-1 hover:bg-gray-700" href="/timer"> timer </a>
-            </div>
           </div>
         </div>
       </nav>

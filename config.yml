@@ -1,8 +1,8 @@
-version: 0.7.0
+version: 0.7.1
 title: pyros.sh
 description: Hi there, I'm Peter John, a fullstack developer from Bangalore, India.
 url: https://pyros.sh
-image: https://pyros.sh/assets/icon.png
-author: pyros.sh
-keywords: pyros2097,pyros.sh,full stack developer,bangalore,india
+image: https://pyros.sh/assets/lighthouse.png
+author: Peter John
+keywords: peter john,pyros.sh,full stack developer,bangalore,india
 languages: [en]

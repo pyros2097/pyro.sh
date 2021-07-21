@@ -92,10 +92,6 @@ description:
     https://github.com/aymerick/douceur
     </a>
 
-  - Finally after messing around with so many libraries I got around to getting it to work and this is how it looks in my email,
-
-  - img: /assets/images/email1.png
-
-  - And in our production systems our errors look like this,
+  - Finally after messing around with so many libraries I got around to getting it to work, and in our production systems our errors look like this,
 
   - img: /assets/images/email2.png

@@ -30,8 +30,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./public/
           server-dir: /
-          exclude: assets/audio*
-            - assets/audio/**/*
       - name: Purge
         run: |
           curl -i --fail -X POST -H "AccessKey: ${{ secrets.BCDN_API_TOKEN }}" -H "Content-Length: 0" https://api.bunny.net/pullzone/392667/purgeCache

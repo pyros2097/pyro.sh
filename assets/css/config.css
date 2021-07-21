@@ -13,6 +13,7 @@
     direction: ltr;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   .link {
@@ -35,3 +36,15 @@
     @apply bg-gray-300 text-gray-900 rounded hover:bg-gray-200 border-gray-800 border px-16 py-12 focus:outline-none text-2xl;
   }
 }
+
+/* p {
+  font-family: 'Adobe Garamond Pro', Garamond, serif;
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+p {
+  margin: 0;
+} */
